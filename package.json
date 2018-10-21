@@ -1,6 +1,6 @@
 {
   "name": "better-lyric-get",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Get lyrics by scraping lyrics-wikia. Technically illegal to use this.",
   "main": "index.js",
   "scripts": {

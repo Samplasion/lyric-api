@@ -67,7 +67,9 @@ module.exports = {
 				lyrics = lyrics.replace(/<[^>]*>/g, '');
 
 				//console.log(lyrics);
-		    if(lyrics != ""){
+				if (lyrics == "Unfortunately, we are not licensed to display the full lyrics for this song at the moment. Hopefully we will be able to in the future. Until then... how about a random page?") {
+					callback("The lyrics were not able to be found because they were unlicensed", null)
+				} else if (lyrics != "") {
 		      callback(null, { lyrics, title: title[1], author: title[0] });
 		    } else {
 		      callback("Song not found", null);
