@@ -18,10 +18,11 @@ module.exports = {
 	        }
 	        else
 	        {
-		        
+
 		        var $ = cheerio.load(html);
 		        $('script').remove();
 		        var lyrics = ($('.lyricbox').html());
+						var title = ($(".page-header__title").text().replace(" Lyrics").split(":"))
 
 				/**
 				 * Override default underscore escape map
@@ -66,13 +67,12 @@ module.exports = {
 				lyrics = lyrics.replace(/<[^>]*>/g, '');
 
 				//console.log(lyrics);
-		        if(lyrics != ""){
-		        	callback(null, lyrics);
-		        }
-		        else{
-		        	callback("not found", null);
-		        }
+		    if(lyrics != ""){
+		      callback(null, { lyrics, title: title[1], author: title[0] });
+		    } else {
+		      callback("Song not found", null);
 		    }
+		  }
 		});
 	}
 }
